@@ -19,8 +19,8 @@ windowBinding();
 // Principle 2
 // code example for Implicit Binding
 const person = {
-  firstName: "Bhumi",
-  lastName: "Patel",
+  firstName: "Sterling",
+  lastName: "Ford",
   fullName: function() {
     console.log(`Name: ${this.firstName} ${this.lastName}`);
   }

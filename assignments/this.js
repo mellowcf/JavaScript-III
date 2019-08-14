@@ -1,54 +1,49 @@
 /* The for principles of "this";
-* in your own words. explain the four principle for the "this" keyword below.
-*
-* 1. window binding make a reference to the global value
-* 2. implicit binding make a reference to the object before the . when calling a function
-* 3. new binding make a reference to newly created object returned by the contructor
-* 4. explicit deals with call and apply.
-*
-* write out a code example of each explanation above
-*/
+ * in your own words. explain the four principle for the "this" keyword below.
+ *
+ * 1. Window Binding is when code is executed using "this" keyword as part of simple function call then it refers to global or window object in case of browser. It is also default binding.
+ * 2. Implicit Binding is when a method is called as a property of object, then "this" refers to the parent object of that method.
+ * 3. New Binding is when a function is called with "new" keyword which is known as constrctor function, then "this" refers to that newly created instance.
+ * 4. Explicit Binding is when a function is called using call, apply, and bind method then "this" refers to the value passed as first argument of call, apply or bind method.
+ *
+ * write out a code example of each explanation above
+ */
 
 // Principle 1
-function singSong(Song) {
-    console.log(this);
-    return name;
-  }
-  singSong("Blinded by the Light");
-
 // code example for Window Binding
+function windowBinding() {
+  console.log(this);
+}
+windowBinding();
 
 // Principle 2
-const myObj = {
-    song: "Blinded by the Light",
-    singSong: function(name) {
-      console.log(`${this.song} by ${name}`);
-      console.log(this);
-    }
-  };
-  myObj.sayHello('Bruce');
-
 // code example for Implicit Binding
+const person = {
+  firstName: "Bhumi",
+  lastName: "Patel",
+  fullName: function() {
+    console.log(`Name: ${this.firstName} ${this.lastName}`);
+  }
+};
+person.fullName();
 
 // Principle 3
-function personTemplate(greeter) {
-    this.greeting = 'Hello ';
-    this.greeter = greeter;
-    this.speak = function() {
-      console.log(this.greeting + this.greeter);
-      console.log(this);
-    };
-  }
-  
-  const jerry = new CordialPerson('Newman');
-  const newman = new CordialPerson('Jerry');
-  
-  newman.speak();
-  newman.speak();
-
 // code example for New Binding
+function DCSuperhero(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.fullName = function() {
+    console.log(`Name: ${this.firstName} ${this.lastName}`);
+  };
+}
+const arrow = new DCSuperhero("Oliver", "Queen");
+const flash = new DCSuperhero("Barry", "Allen");
+const supergirl = new DCSuperhero("Kara", "Zor-El");
+arrow.fullName();
 
 // Principle 4
-
 // code example for Explicit Binding
-jerry.speak.call(newman); newman.speak.apply(jerry);
+//kept the same example as principle 3 - New Binding
+
+arrow.fullName.call(flash);
+flash.fullName.apply(supergirl);
